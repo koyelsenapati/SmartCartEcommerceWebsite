@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SmartCart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <h1 class="logo">
+            SmartCart 🛒
+        </h1>
+
+        <ul>
+
+            <li>
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{{ url_for('products') }}">
+                    Products
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{{ url_for('login') }}">
+                    Login
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{{ url_for('register') }}">
+                    Register
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{{ url_for('cart') }}">
+                    Cart
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- Dynamic Content -->
+
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+
+    <!-- Footer -->
+
+
+    <footer>
+
+        <p>
+            © 2026 SmartCart. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

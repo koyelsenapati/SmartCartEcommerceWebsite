@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="register-section">
+
+    <div class="register-box">
+
+        <h1>
+            Create Account
+        </h1>
+
+        <form method="POST">
+
+            <input type="text" name="fullname" placeholder="Enter Full Name" required>
+
+
+            <input type="email" name="email" placeholder="Enter Email Address" required>
+
+
+            <input type="password" name="password" placeholder="Create Password" required>
+
+
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
+
+
+        <p>
+            Already have an account?
+            <a href="{{ url_for('login') }}">
+                Login Here
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="login-box">
+
+        <h1>
+            Login
+        </h1>
+
+        <form method="POST">
+
+            <input type="email" name="email" placeholder="Enter Your Email" required>
+
+
+            <input type="password" name="password" placeholder="Enter Password" required>
+
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p>
+            Don't have an account?
+            <a href="{{ url_for('register') }}">
+                Register Here
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

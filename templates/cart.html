@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<section class="cart-section">
+
+    <h1>
+        Your Shopping Cart
+    </h1>
+
+
+    <div class="cart-container">
+
+        <!-- Product Item -->
+
+        <div class="cart-item">
+
+            <img 
+            src="https://via.placeholder.com/150"
+            alt="Product">
+
+
+            <div class="item-details">
+
+                <h2>Smart Watch</h2>
+
+                <p>Price: ₹2999</p>
+
+                <p>Quantity: 1</p>
+
+
+                <button>
+                    Remove
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Order Summary -->
+
+        <div class="cart-summary">
+
+            <h2>
+                Order Summary
+            </h2>
+
+
+            <p>
+                Subtotal: ₹2999
+            </p>
+
+
+            <p>
+                Delivery: ₹99
+            </p>
+
+
+            <hr>
+
+
+            <h3>
+                Total: ₹3098
+            </h3>
+
+
+            <button>
+                Proceed to Checkout
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}
