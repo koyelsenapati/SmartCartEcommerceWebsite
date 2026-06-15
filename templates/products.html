@@ -10,29 +10,26 @@
 
     <div class="products-grid">
 
+        {% for product in products %}
 
-        <!-- Product 1 -->
         <div class="product-card">
 
             <img 
-            src="https://via.placeholder.com/200"
-            alt="Smart Watch">
-
+                src="{{ product.image_url }}"
+                alt="{{ product.name }}"
+            >
 
             <h2>
-                Smart Watch
+                {{ product.name }}
             </h2>
 
-
             <p>
-                Premium fitness tracking watch.
+                {{ product.description }}
             </p>
 
-
             <h3>
-                ₹2999
+                ₹{{ product.price }}
             </h3>
-
 
             <button>
                 Add To Cart
@@ -40,66 +37,7 @@
 
         </div>
 
-
-        <!-- Product 2 -->
-        <div class="product-card">
-
-            <img 
-            src="https://via.placeholder.com/200"
-            alt="Earbuds">
-
-
-            <h2>
-                Wireless Earbuds
-            </h2>
-
-
-            <p>
-                Crystal clear sound experience.
-            </p>
-
-
-            <h3>
-                ₹1999
-            </h3>
-
-
-            <button>
-                Add To Cart
-            </button>
-
-        </div>
-
-
-        <!-- Product 3 -->
-        <div class="product-card">
-
-            <img 
-            src="https://via.placeholder.com/200"
-            alt="Keyboard">
-
-
-            <h2>
-                Gaming Keyboard
-            </h2>
-
-
-            <p>
-                RGB mechanical gaming keyboard.
-            </p>
-
-
-            <h3>
-                ₹3499
-            </h3>
-
-
-            <button>
-                Add To Cart
-            </button>
-
-        </div>
-
+        {% endfor %}
 
     </div>
 

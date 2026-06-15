@@ -9,32 +9,28 @@
     <div class="product-image">
 
         <img 
-        src="https://via.placeholder.com/350"
-        alt="Product">
+            src="{{ product.image_url }}"
+            alt="{{ product.name }}"
+        >
 
     </div>
 
 
     <div class="product-info">
 
-        <h1>
-            Product ID: {{ product_id }}
-        </h1>
-
 
         <h2>
-            Smart Watch
+            {{ product.name }}
         </h2>
 
 
         <p>
-            Premium smartwatch with heart-rate monitor,
-            fitness tracking and long battery life.
+            {{ product.description }}
         </p>
 
 
         <h3>
-            ₹2999
+            ₹{{ product.price }}
         </h3>
 
 
@@ -52,5 +48,6 @@
 
 
 </section>
+
 
 {% endblock %}

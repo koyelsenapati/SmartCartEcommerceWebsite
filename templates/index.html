@@ -13,9 +13,13 @@
         Your AI Powered Shopping Partner
     </p>
 
-    <button>
-        Shop Now
-    </button>
+    <a href="{{ url_for('products') }}">
+
+        <button>
+            Shop Now
+        </button>
+
+    </a>
 
 </section>
 
@@ -26,34 +30,29 @@
         Featured Products
     </h2>
 
-
     <div class="product-container">
 
+        {% for product in products %}
 
         <div class="card">
 
-            <img 
-            src="https://via.placeholder.com/200"
-            alt="Product">
-
+            <img src="{{ product.image_url }}" alt="{{ product.name }}">
 
             <h3>
-                Smart Watch
+                {{ product.name }}
             </h3>
 
-
             <p>
-                ₹2999
+                ₹{{ product.price }}
             </p>
-
 
             <button>
                 Buy Now
             </button>
 
-
         </div>
 
+        {% endfor %}
 
     </div>
 
