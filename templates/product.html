@@ -1,53 +1,142 @@
 {% extends "base.html" %}
 
-
 {% block content %}
 
 <section class="product-details">
 
-
-    <div class="product-image">
-
-        <img 
-            src="{{ product.image_url }}"
-            alt="{{ product.name }}"
-        >
-
-    </div>
+```
+<div class="product-image">
+    <img src="{{ product.image_url }}" alt="{{ product.name }}">
+</div>
 
 
-    <div class="product-info">
+<div class="product-info">
+
+    <h2>
+        {{ product.name }}
+    </h2>
 
 
-        <h2>
-            {{ product.name }}
-        </h2>
+    <p>
+        {{ product.description }}
+    </p>
 
 
-        <p>
-            {{ product.description }}
-        </p>
+    <h3>
+        ₹{{ product.price }}
+    </h3>
 
 
-        <h3>
-            ₹{{ product.price }}
-        </h3>
+    <hr>
 
 
-        <p>
-            ⭐ 4.5/5 Rating
-        </p>
+    <h2>
+        Customer Reviews ⭐
+    </h2>
 
 
-        <button>
-            Add To Cart
+    {% if session.get("user_id") %}
+
+    <form 
+        action="{{ url_for('product.add_review', product_id=product.id) }}" 
+        method="POST"
+    >
+
+        <label>
+            Rating:
+        </label>
+
+        <select name="rating">
+
+            <option value="5">⭐⭐⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="1">⭐</option>
+
+        </select>
+
+
+        <br><br>
+
+
+        <textarea 
+            name="comment"
+            placeholder="Write your review"
+            required>
+        </textarea>
+
+
+        <br><br>
+
+
+        <button type="submit">
+            Submit Review
         </button>
 
+    </form>
 
-    </div>
 
+    {% else %}
+
+    <p>
+        Please login to write a review.
+    </p>
+
+    {% endif %}
+
+
+    <hr>
+
+
+    {% if reviews %}
+
+        {% for review in reviews %}
+
+        <div class="review-card">
+
+            <h3>
+                {{ review.fullname }}
+            </h3>
+
+            <p>
+                Rating: {{ review.rating }}/5 ⭐
+            </p>
+
+            <p>
+                {{ review.comment }}
+            </p>
+
+            <small>
+                {{ review.created_at }}
+            </small>
+
+        </div>
+
+        <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <h3>
+            No Reviews Yet
+        </h3>
+
+    {% endif %}
+
+
+    <a href="{{ url_for('cart.add_to_cart', id=product.id) }}">
+
+        <button>
+            Add To Cart 🛒
+        </button>
+
+    </a>
+
+</div>
+```
 
 </section>
-
 
 {% endblock %}

@@ -4,9 +4,13 @@
 <head>
     <title>SmartCart</title>
 
-    <link rel="stylesheet" 
-          href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+<script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
 
 <body>
 
@@ -23,25 +27,30 @@
         <ul>
 
             <li>
-                <a href="{{ url_for('home') }}">
+                <a href="{{ url_for('product.home') }}">
                     Home
                 </a>
             </li>
 
 
             <li>
-                <a href="{{ url_for('products') }}">
+                <a href="{{ url_for('product.products') }}">
                     Products
                 </a>
             </li>
 
 
             <li>
-                <a href="{{ url_for('cart') }}">
+                <a href="{{ url_for('cart.view_cart') }}"> 
                     Cart
                 </a>
             </li>
 
+            <li>
+                <a href="{{ url_for('order.my_orders')  }}">
+                    My Orders
+                </a>
+            </li>
 
             {% if session.get("user_id") %}
 
@@ -52,7 +61,7 @@
 
 
             <li>
-                <a href="{{ url_for('logout') }}">
+                <a href="{{ url_for('auth.logout') }}">
                     Logout
                 </a>
             </li>
@@ -62,14 +71,14 @@
 
 
             <li>
-                <a href="{{ url_for('login') }}">
+                <a href="{{ url_for('auth.login') }}">
                     Login
                 </a>
             </li>
 
 
             <li>
-                <a href="{{ url_for('register') }}">
+                <a href="{{ url_for('auth.register') }}">
                     Register
                 </a>
             </li>
@@ -86,13 +95,9 @@
 
     <!-- Search Bar -->
 
-    <form action="{{ url_for('search') }}">
+    <form action="{{ url_for('product.search') }}">
 
-        <input 
-            type="text"
-            name="keyword"
-            placeholder="Search Products"
-        >
+        <input type="text" name="keyword" placeholder="Search Products">
 
         <button type="submit">
             Search
@@ -105,17 +110,17 @@
 
     {% with messages = get_flashed_messages() %}
 
-        {% if messages %}
+    {% if messages %}
 
-            {% for message in messages %}
+    {% for message in messages %}
 
-                <p>
-                    {{ message }}
-                </p>
+    <p>
+        {{ message }}
+    </p>
 
-            {% endfor %}
+    {% endfor %}
 
-        {% endif %}
+    {% endif %}
 
     {% endwith %}
 

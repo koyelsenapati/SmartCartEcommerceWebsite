@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>
+    Admin Product Panel 📦
+</h1>
+
+
+<a href="{{ url_for('admin.add_product') }}">
+    <button>
+        Add New Product ➕
+    </button>
+</a>
+
+<br><br>
+
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Action</th>
+    </tr>
+
+
+    {% for product in products %}
+
+    <tr>
+
+        <td>
+            {{ product.id }}
+        </td>
+
+        <td>
+            {{ product.name }}
+        </td>
+
+        <td>
+            ₹{{ product.price }}
+        </td>
+
+        <td>
+            {{ product.stock }}
+        </td>
+
+        <td>
+
+            <a href="{{ url_for('admin.edit_product', id=product.id) }}">
+                Edit ✏️
+            </a>
+
+            |
+
+            <a href="{{ url_for('admin.delete_product', id=product.id) }}">
+                Delete 🗑️
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+
+</table>
+
+{% endblock %}

@@ -14,26 +14,50 @@
 
         <div class="product-card">
 
-            <img 
-                src="{{ product.image_url }}"
-                alt="{{ product.name }}"
-            >
+            <a href="{{ url_for('product.single_product', id=product.id) }}">
+
+                <img 
+                    src="{{ product.image_url }}" 
+                    alt="{{ product.name }}"
+                >
+
+            </a>
+
 
             <h2>
-                {{ product.name }}
+
+                <a href="{{ url_for('product.single_product', id=product.id) }}">
+
+                    {{ product.name }}
+
+                </a>
+
             </h2>
 
+
             <p>
+
                 {{ product.description }}
+
             </p>
 
+
             <h3>
+
                 ₹{{ product.price }}
+
             </h3>
 
-            <button>
-                Add To Cart
-            </button>
+
+            <a href="{{ url_for('cart.add_to_cart', id=product.id) }}">
+
+                <button>
+
+                    Add To Cart 🛒
+
+                </button>
+
+            </a>
 
         </div>
 

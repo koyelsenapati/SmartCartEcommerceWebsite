@@ -1,80 +1,93 @@
 {% extends "base.html" %}
 
-
 {% block content %}
 
 <section class="cart-section">
 
     <h1>
-        Your Shopping Cart
+        My Shopping Cart 🛒
     </h1>
 
 
-    <div class="cart-container">
+    {% if cart_items %}
 
-        <!-- Product Item -->
+    {% for item in cart_items %}
 
-        <div class="cart-item">
+    <div class="cart-card">
 
-            <img 
-            src="https://via.placeholder.com/150"
-            alt="Product">
+        <img src="{{ item.image_url }}" alt="{{ item.name }}">
 
-
-            <div class="item-details">
-
-                <h2>Smart Watch</h2>
-
-                <p>Price: ₹2999</p>
-
-                <p>Quantity: 1</p>
-
-
-                <button>
-                    Remove
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Order Summary -->
-
-        <div class="cart-summary">
+        <div class="cart-info">
 
             <h2>
-                Order Summary
+                {{ item.name }}
             </h2>
 
 
             <p>
-                Subtotal: ₹2999
+                Price: ₹{{ item.price }}
             </p>
 
 
             <p>
-                Delivery: ₹99
+
+                <a href="{{ url_for('cart.decrease', id=item.id) }}">
+                    ➖
+                </a>
+
+
+                Quantity: {{ item.quantity }}
+
+
+                <a href="{{ url_for('cart.increase', id=item.id) }}">
+                    ➕
+                </a>
+
             </p>
 
 
-            <hr>
-
-
             <h3>
-                Total: ₹3098
+                Total: ₹{{ item.total }}
             </h3>
 
 
-            <button>
-                Proceed to Checkout
-            </button>
+            <a href="{{ url_for('cart.remove', id=item.id) }}">
+                <button>
+                    Remove 🗑️
+                </button>
+
+            </a>
+
 
         </div>
 
-
     </div>
+
+    {% endfor %}
+
+
+    <h2>
+        Grand Total: ₹{{ grand_total }}
+    </h2>
+
+
+    <a href="{{ url_for('order.checkout') }}">
+
+        <button>
+            Proceed To Checkout 💳
+        </button>
+
+    </a>
+
+
+    {% else %}
+
+    <h2>
+        Your Cart Is Empty 😔
+    </h2>
+
+    {% endif %}
+
 
 </section>
 
